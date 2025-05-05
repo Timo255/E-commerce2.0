@@ -17,13 +17,7 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const { sequelize } = require("./models");
 const verifyJWT = require("./Controller/middleware/verifyJWT");
 const PORT = process.env.PORT || 3000;
-const Redis = require("redis");
 
-const redisClient = Redis.createClient({
-  legacyMode: true,
-  PORT: 6379
-});
-redisClient.connect().catch(console.error);
 
 // credentials enables to fetch cookies credentials requirement
 app.use(credentials);
