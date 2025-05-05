@@ -1,18 +1,10 @@
 const { Op } = require("sequelize");
 const { products, variation } = require("../../models");
-const Redis = require("redis");
-const redisClient = Redis.createClient({
-  legacyMode: true,
-  PORT: 6379,
-});
-redisClient.connect().catch(console.error);
+
 
 const getAllproducts = async (req, res) => {
   try {
-    const allProducts = await getorSetCache("allProducts", async () => {
-      const allProducts = await products.findAll({ include: variation });
-      return allProducts;
-    });
+    const allProducts = await products.findAll({ include: variation });
 
     if (!allProducts) {
       return res.status(204).json({ message: "no products found" });
@@ -26,12 +18,10 @@ const getAllproducts = async (req, res) => {
 
 const getSliderProducts = async (req, res) => {
   try {
-    const productSlider = await getorSetCache("productSlider", async () => {
-      const productSlider = await products.findAll({
-        where: { isSlider: "slider" },
-      });
-      return productSlider;
+    const productSlider = await products.findAll({
+      where: { isSlider: "slider" },
     });
+
     if (!productSlider) {
       return res.status(204).json({ message: "No products found" });
     }
@@ -43,11 +33,8 @@ const getSliderProducts = async (req, res) => {
 
 const getNewProducts = async (req, res) => {
   try {
-    const newProducts = await getorSetCache("newProducts", async () => {
-      const newProducts = await products.findAll({
-        where: { newProduct: "newPrd" },
-      });
-      return newProducts;
+    const newProducts = await products.findAll({
+      where: { newProduct: "newPrd" },
     });
 
     if (!newProducts) {
@@ -62,12 +49,9 @@ const getNewProducts = async (req, res) => {
 
 const getOffer = async (req, res) => {
   try {
-    const offerProduct = await getorSetCache("offerProduct", async () => {
-      const offerProduct = await products.findOne({
-        where: { isOffer: "yes" },
-        include: variation
-      });
-      return offerProduct;
+    const offerProduct = await products.findOne({
+      where: { isOffer: "yes" },
+      include: variation,
     });
     if (!offerProduct) {
       return res.status(204).json({ message: "No offer found" });
@@ -84,39 +68,27 @@ const getQueryProducts = async (req, res) => {
 
   try {
     if (categoryName != "" && categoryName != "all") {
-      const productss = await getorSetCache(`${categoryName}`, async () => {
-        const productss = await products.findAll({
-          where: { category: categoryName, isOffer: "no" },
-          include: variation,
-        });
-        return productss;
+      const productss = await products.findAll({
+        where: { category: categoryName, isOffer: "no" },
+        include: variation,
       });
       return res.json(productss);
     } else if (categoryName == "all") {
-      const productss = await getorSetCache(`${categoryName}Prds`, async () => {
-        const productss = await products.findAll({
-          where: { isOffer: "no" },
-          include: variation,
-        });
-        return productss;
+      const productss = await products.findAll({
+        where: { isOffer: "no" },
+        include: variation,
       });
       return res.json(productss);
     } else if (q != "") {
-      const productss = await getorSetCache(`searchPrd?${q}`, async () => {
-        const productss = await products.findAll({
-          where: { isOffer: "no", nameShop: { [Op.substring]: q } },
-          include: variation,
-        });
-        return productss;
+      const productss = await products.findAll({
+        where: { isOffer: "no", nameShop: { [Op.substring]: q } },
+        include: variation,
       });
       return res.json(productss);
     } else {
-      const productss = await getorSetCache(`allCategoryProducts`, async () => {
-        const productss = await products.findAll({
-          where: { isOffer: "no" },
-          include: variation,
-        });
-        return productss;
+      const productss = await products.findAll({
+        where: { isOffer: "no" },
+        include: variation,
       });
       return res.json(productss);
     }
@@ -127,11 +99,8 @@ const getQueryProducts = async (req, res) => {
 
 const getRelatedProducts = async (req, res) => {
   try {
-    const relatedProducts = await getorSetCache(`relatedProducts`, async () => {
-      const relatedProducts = await products.findAll({
-        where: { relatedProduct: "related" },
-      });
-      return relatedProducts;
+    const relatedProducts = await products.findAll({
+      where: { relatedProduct: "related" },
     });
 
     if (!relatedProducts) {
