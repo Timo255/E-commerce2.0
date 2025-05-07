@@ -54,7 +54,7 @@ const ProductDetails = ({ item }) => {
       <div className="imgBox">
         <div className="bigImg">
           <img
-            src={`http://localhost:3000/images/${getImage(
+            src={`https://e-commerce2-0-xh7h.onrender.com/images/${getImage(
               selectedColor ? selectedColor : selectedText
             )}`}
             alt=""

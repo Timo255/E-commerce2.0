@@ -76,7 +76,7 @@ const Orders = () => {
                   <div className="orderInfo" key={item.id}>
                     <div className="orderImg">
                       <img
-                        src={`http://localhost:3000/images/${item.imgUrl}`}
+                        src={`https://e-commerce2-0-xh7h.onrender.com/images/${item.imgUrl}`}
                         alt=""
                       />
                     </div>

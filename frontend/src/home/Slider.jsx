@@ -11,7 +11,7 @@ const Slider = () => {
   useEffect(() => {
     const getSliderProducts = async () => {
       const productSlider = await axios.get(
-        "http://localhost:3000/products/sliderProducts"
+        "https://e-commerce2-0-xh7h.onrender.com/products/sliderProducts"
       );
       setProductsSlider(productSlider?.data);
     };
@@ -74,11 +74,11 @@ const Slider = () => {
                 </div>
                 <div className="advert-img">
                   <img
-                    src={`http://localhost:3000/images/${slide.imgLg439}`}
+                    src={`https://e-commerce2-0-xh7h.onrender.com/images/${slide.imgLg439}`}
                     alt=""
-                    srcSet={`http://localhost:3000/images/${slide.imgLg439} 439w,
-                               http://localhost:3000/images/${slide.imgMd309} 209w,
-                               http://localhost:3000/images/${slide.imgMd360} 360w`}
+                    srcSet={`https://e-commerce2-0-xh7h.onrender.com/images/${slide.imgLg439} 439w,
+                               https://e-commerce2-0-xh7h.onrender.com/images/${slide.imgMd309} 209w,
+                               https://e-commerce2-0-xh7h.onrender.com/images/${slide.imgMd360} 360w`}
                     sizes="(max-width: 480px) 360px,
                                 (max-width: 1024px) 309px, 439px"
                   />
