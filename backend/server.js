@@ -9,7 +9,9 @@ const session = require("express-session");
 const setCache = require("./Controller/middleware/cacheRoutes")
 const credentials = require("./Controller/middleware/credentials");
 const Sequelize = require("sequelize");
-var sequelizeDb = new Sequelize("e_commerce", "root", "", {
+var sequelizeDb = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
   dialect: "mysql",
   storage: "./session.mysql",
 });
