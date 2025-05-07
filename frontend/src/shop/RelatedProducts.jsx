@@ -7,7 +7,7 @@ const RelatedProducts = () => {
 
     useEffect(()=>{
       const getRelatedProducts = async () =>{
-        const productsRelated = await axios.get('https://e-commerce2-0-xh7h.onrender.com/products/relatedProducts');
+        const productsRelated = await axios.get(`${import.meta.env.VITE_APIURL}/products/relatedProducts`);
         setRelatedProducts(productsRelated.data)
       }
 
@@ -24,7 +24,7 @@ const RelatedProducts = () => {
            <div className="product-img-details" key={item.uuid}>
              <div className="img-product">
                 <Link to={`/shop/${item.uuid}`} onClick={() => window.scroll(0,0)}>
-                  <img src={`https://e-commerce2-0-xh7h.onrender.com/images/${item.img}`} alt="" />
+                  <img src={`${import.meta.env.VITE_APIURL}/images/${item.img}`} alt="" />
                 </Link>
              </div>
              <div className="product-details">

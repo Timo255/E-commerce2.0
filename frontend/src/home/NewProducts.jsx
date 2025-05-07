@@ -9,7 +9,7 @@ const NewProducts = () => {
 
    useEffect(()=>{
       const getNewProducts = async () =>{
-         const newproducts = await axios.get('https://e-commerce2-0-xh7h.onrender.com/products/newProducts');
+         const newproducts = await axios.get(`${import.meta.env.VITE_APIURL}/products/newProducts`);
          setNewProducts(newproducts?.data); 
       }
 
@@ -26,7 +26,7 @@ const NewProducts = () => {
                <div className="product-img-details" key={newProduct.uuid}>
                  <div className="img-product">
                     <Link to={`/shop/${newProduct.uuid}`} onClick={() => window.scroll(0,0)}>
-                     <img src={`https://e-commerce2-0-xh7h.onrender.com/images/${newProduct.img}`} alt="" />
+                     <img src={`${import.meta.env.VITE_APIURL}/images/${newProduct.img}`} alt="" />
                     </Link>
                  </div>  
                  <div className="product-details">

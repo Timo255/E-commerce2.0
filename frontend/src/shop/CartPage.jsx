@@ -49,7 +49,7 @@ const CartPage = () => {
                 <div className="itemProduct">
                   <div className="itemImg">
                     <img
-                      src={`https://e-commerce2-0-xh7h.onrender.com/images/${item.imgUrl}`}
+                      src={`${import.meta.env.VITE_APIURL}/images/${item.imgUrl}`}
                       alt=""
                     />
                   </div>

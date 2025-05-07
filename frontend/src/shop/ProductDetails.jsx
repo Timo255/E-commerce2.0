@@ -54,7 +54,7 @@ const ProductDetails = ({ item }) => {
       <div className="imgBox">
         <div className="bigImg">
           <img
-            src={`https://e-commerce2-0-xh7h.onrender.com/images/${getImage(
+            src={`${import.meta.env.VITE_APIURL}/images/${getImage(
               selectedColor ? selectedColor : selectedText
             )}`}
             alt=""

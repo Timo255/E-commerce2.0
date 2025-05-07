@@ -15,7 +15,7 @@ const Products = ({ items }) => {
                 to={`/shop/${item.uuid}`}
                 onClick={() => window.scroll(0, 0)}
               >
-                <img src={`https://e-commerce2-0-xh7h.onrender.com/images/${item.img}`} alt="" />
+                <img src={`${import.meta.env.VITE_APIURL}/images/${item.img}`} alt="" />
               </Link>
             </div>
             <div className="product-details">

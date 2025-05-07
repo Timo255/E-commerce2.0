@@ -1,11 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { useSearchParams } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
 import { ProductCart } from "../Context/OveralProvider";
 
 const Orders = () => {
-  const { auth } = useAuth;
   const axiosPrivate = useAxiosPrivate();
   const [searchParams] = useSearchParams();
   const [orderItems, setOrderItems] = useState();
@@ -76,7 +74,7 @@ const Orders = () => {
                   <div className="orderInfo" key={item.id}>
                     <div className="orderImg">
                       <img
-                        src={`https://e-commerce2-0-xh7h.onrender.com/images/${item.imgUrl}`}
+                        src={`${import.meta.env.VITE_APIURL}/images/${item.imgUrl}`}
                         alt=""
                       />
                     </div>

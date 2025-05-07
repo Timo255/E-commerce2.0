@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   FaCheck,
   FaInfoCircle,
@@ -7,7 +7,6 @@ import {
   FaEyeSlash,
 } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Context/Authentication";
 import axios from "../axiosApi/axios";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/; // first array says start with a lowercase or uppercase letter 2nd Array says the next letters can be lowercase uppercase digits or _ and must be 3 to 23 char so full username must be 4 - 24 char

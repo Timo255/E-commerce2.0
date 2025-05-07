@@ -8,7 +8,7 @@ const Offer = () => {
   useEffect(() => {
     const getOffer = async () => {
       const offerProduct = await axios.get(
-        "https://e-commerce2-0-xh7h.onrender.com/products/offer"
+        `${import.meta.env.VITE_APIURL}/products/offer`
       );
       setProductOffer(offerProduct?.data);
     };
@@ -33,10 +33,10 @@ const Offer = () => {
             </div>
             <div className="offer-img">
               <img
-                src={`https://e-commerce2-0-xh7h.onrender.com/images/${productsOffer?.imgLg439}`}
+                src={`${import.meta.env.VITE_APIURL}/images/${productsOffer?.imgLg439}`}
                 alt=""
-                srcSet={`https://e-commerce2-0-xh7h.onrender.com/images/${productsOffer?.imgLg439} 437w,
-                      https://e-commerce2-0-xh7h.onrender.com/images/${productsOffer?.imgMd360} 360w`}
+                srcSet={`${import.meta.env.VITE_APIURL}/images/${productsOffer?.imgLg439} 437w,
+                      ${import.meta.env.VITE_APIURL}/images/${productsOffer?.imgMd360} 360w`}
                 sizes="(max-width: 480px) 360px, 437px"
               />
             </div>
