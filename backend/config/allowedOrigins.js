@@ -1,7 +1,7 @@
 const allowedOrigins = [
     'http://localhost:5173',
     'http://localhost:3000',
-    'https://e-commerce2-0-1.onrender.com'
+'https://681e1eb2f162b6ba68ac4d28--soft-cactus-1fe087.netlify.app/'
 ]
 
 module.exports = allowedOrigins;
