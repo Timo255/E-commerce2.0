@@ -1,7 +1,7 @@
 const allowedOrigins = [
     'http://localhost:5173',
     'http://localhost:3000',
-    'https://soft-cactus-1fe087.netlify.app/',
+    'furnitur3store.netlify.app/',
     'https://e-commerce2-0-xh7h.onrender.com/'
 ]
 
