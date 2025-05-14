@@ -21,30 +21,30 @@ const ProductDetails = ({ item }) => {
   /* image change when different variation is selected */
   //function to get the image according to the variation we will be passing in
   const getImage = (varia) => {
-    const image = item.variations.find((vari) => vari.name.includes(varia));
+    const image = item.variations.find(async(vari) => await vari.name.includes(varia));
     return image.imgUrl || "";
   };
   /* /image change when different variation is selected */
 
   const getPrice = (variaNames) => {
-    const priceValue = item.variations.find((vari) =>
-      vari.name.includes(variaNames)
+    const priceValue = item.variations.find(async (vari) =>
+      await vari.name.includes(variaNames)
     );
     return priceValue.priceV || "";
   };
 
   const getId = (variaName) => {
-    const idValue = item.variations.find((vari) =>
-      vari.name.includes(variaName)
+    const idValue = item.variations.find(async (vari) =>
+      await vari.name.includes(variaName)
     );
     return idValue.productsId || "";
   };
 
   useEffect(() => {
     // this useEffect updates initial setSelectedColor and setSelectedText, it saves the initial variation to the "selectedColor" & "selectedText",when we get the single product for the product details "helps as to have an active variation first then when you select another variation it changes"
-    if (item && item.variations[0].colorData1 != "") {
+    if (item && item.variations[0].colorData1 !== "") {
       setSelectedColor(item.variations[0].colorData1);
-    } else if (item && item.variations[0].textData != "") {
+    } else if (item && item.variations[0].textData !== "") {
       setSelectedText(item.variations[0].textData);
     }
   }, [item, setSelectedColor, setSelectedText]);
