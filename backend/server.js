@@ -95,7 +95,7 @@ app.use("/orders",require("./Controller/routes/userOrder"));
 
 app.listen(PORT, async () => {
   try {
-    console.log("Server up on http://localhost:3000");
+    console.log(`Server up on port ${PORT}`);
     await sequelize.authenticate();
     console.log("Database Connected");
   } catch (err) {

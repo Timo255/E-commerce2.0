@@ -21,7 +21,7 @@ const ProductDetails = ({ item }) => {
   /* image change when different variation is selected */
   //function to get the image according to the variation we will be passing in
   const getImage = (varia) => {
-    const image = item.variations.find(async(vari) => await vari.name.includes(varia));
+    const image = item.variations.find((vari) => vari.name.includes(varia));
     return image.imgUrl || "";
   };
   /* /image change when different variation is selected */
@@ -48,15 +48,15 @@ const ProductDetails = ({ item }) => {
       setSelectedText(item.variations[0].textData);
     }
   }, [item, setSelectedColor, setSelectedText]);
-
+  
   return (
     <div className="itemDetail" key={uuid}>
       <div className="imgBox">
         <div className="bigImg">
           <img
-            src={`${import.meta.env.VITE_APIURL}/images/${getImage(
+            src={`${import.meta.env.VITE_APIURL}/images/${selectedColor !== "" || selectedText !== "" ? getImage(
               selectedColor ? selectedColor : selectedText
-            )}`}
+            ) : nameProduct}`}
             alt=""
           />
         </div>
