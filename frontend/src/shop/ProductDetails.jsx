@@ -42,10 +42,10 @@ const ProductDetails = ({ item }) => {
 
   useEffect(() => {
     // this useEffect updates initial setSelectedColor and setSelectedText, it saves the initial variation to the "selectedColor" & "selectedText",when we get the single product for the product details "helps as to have an active variation first then when you select another variation it changes"
-    if (item && item.variations[0].colorData1 !== "") {
-      setSelectedColor(item.variations[0].colorData1);
-    } else if (item && item.variations[0].textData !== "") {
-      setSelectedText(item.variations[0].textData);
+    if (item && item?.variations[0].colorData1 != "") {
+      setSelectedColor(item?.variations[0]?.colorData1);
+    } else if (item && item?.variations[0]?.textData != "") {
+      setSelectedText(item?.variations[0]?.textData);
     }
   }, [item, setSelectedColor, setSelectedText]);
   
