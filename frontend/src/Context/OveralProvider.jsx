@@ -90,13 +90,12 @@ const OveralProvider = ({ children }) => {
 
   // updateQuantity
   const handleQuantity = async (item, e) => {
-    const quantity = e.target.value;
+    const quantity = parseInt(e.target.value);
     const productId = item?.productId;
 
     try {
       await axios.put(`/cart/${productId}`, JSON.stringify({ quantity }));
       setCartItems(cartItems.map((item)=> item.productId === productId ? {...item, quantity} : item))
-      setUpdateBasket(true);
     } catch (err) {
       console.log(err);
     }
@@ -113,7 +112,6 @@ const OveralProvider = ({ children }) => {
     try {
       await axios.delete(`/cart/${productId}`);
       setCartItems(cartItems.filter((cartItem) => cartItem.productId !== productId));
-      setUpdateBasket(true);
 
       toast.error("item deleted",{
         position: "top-center",
