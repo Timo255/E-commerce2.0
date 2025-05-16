@@ -44,19 +44,22 @@ let sessionStore = new SequelizeStore({
   db: sequelizeDb,
   checkExpirationInterval: 1800000,
 });
+let sess = {
+  secret: process.env.SESSION_SECRET_KEY,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {},
+  store: sessionStore,
+}
+if(app.get('env') === 'production'){
+  app.set('trust proxy', 1);
+  sess.cookie.secure = true;
+  sess.cookie.sameSite = "none";
+  sess.cookie.maxAge = 3600000
+  sess.cookie.httpOnly = true;
+}
 app.use(
-  session({
-    secret: process.env.SESSION_SECRET_KEY,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      httpOnly: true,
-      secure: true,
-      sameSite: "None",
-      maxAge: 3600000,
-    },
-    store: sessionStore,
-  })
+  session(sess)
 );
 sessionStore.sync();
 
