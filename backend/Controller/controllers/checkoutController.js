@@ -87,8 +87,8 @@ const handleCheckout = async (req, res) => {
       customer: customer.id,
       line_items,
       mode: "payment",
-      success_url: "http://localhost:5173/orders?success=true",
-      cancel_url: "http://localhost:5173/cart?cancel=true",
+      success_url: "https://e-commerce2-0-1.onrender.com/orders?success=true",
+      cancel_url: "https://e-commerce2-0-1.onrender.com/cart?cancel=true",
     });
 
     
