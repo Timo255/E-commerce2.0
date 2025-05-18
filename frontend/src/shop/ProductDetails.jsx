@@ -54,9 +54,9 @@ const ProductDetails = ({ item }) => {
       <div className="imgBox">
         <div className="bigImg">
           <img
-            src={`${import.meta.env.VITE_APIURL}/images/${selectedColor !== "" || selectedText !== "" ? getImage(
+            src={`${import.meta.env.VITE_APIURL}/images/${getImage(
               selectedColor ? selectedColor : selectedText
-            ) : nameProduct}`}
+            )}`}
             alt=""
           />
         </div>
